@@ -1,7 +1,7 @@
 package com.zk;
 
-import com.entity.ConsumerBean;
-import com.entity.ProviderBean;
+import com.entity.rpc.ConsumerBean;
+import com.entity.rpc.ProviderBean;
 import com.untils.JsonUtils;
 import org.apache.zookeeper.*;
 

@@ -2,8 +2,6 @@ package com.service.impl;
 
 import com.entity.Student;
 import com.service.OrederService;
-import com.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,12 +12,13 @@ import org.springframework.stereotype.Service;
 public class OrederServiceImpl implements OrederService {
 
 
-    @Autowired
-    private StudentService studentService;
+//    @Autowired
+//    private StudentService studentService;
 
 
     @Override
     public Student getStudent(Integer studentId) {
+        System.out.println("OrederServiceImpl......getStudent");
         return null;
     }
 }

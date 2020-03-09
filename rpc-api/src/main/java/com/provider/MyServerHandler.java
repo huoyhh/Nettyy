@@ -1,7 +1,7 @@
 package com.provider;
 
-import com.entity.RequestBean;
-import com.entity.ResponseBean;
+import com.entity.rpc.RequestBean;
+import com.entity.rpc.ResponseBean;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

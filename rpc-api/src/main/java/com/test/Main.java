@@ -1,6 +1,6 @@
 package com.test;
 
-import com.entity.RequestBean;
+import com.entity.rpc.RequestBean;
 import com.entity.Student;
 import com.untils.JsonUtils;
 

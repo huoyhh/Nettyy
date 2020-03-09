@@ -1,6 +1,6 @@
 package com.provider;
 
-import com.entity.ProviderBean;
+import com.entity.rpc.ProviderBean;
 import com.untils.IPAddressUntils;
 import com.zk.ZKClient;
 import io.netty.bootstrap.ServerBootstrap;
@@ -114,5 +114,6 @@ public class NettyServer implements InitializingBean, ApplicationListener<Applic
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+        
     }
 }

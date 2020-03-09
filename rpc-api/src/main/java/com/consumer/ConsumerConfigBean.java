@@ -3,6 +3,7 @@ package com.consumer;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.PriorityOrdered;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("classpath:myrpc_consumer.properties")
 @Data
-public class ConsumerConfigBean {
+public class ConsumerConfigBean implements PriorityOrdered {
 
 
     @Value("${consumer.name}")
@@ -23,4 +24,10 @@ public class ConsumerConfigBean {
 
     @Value("${zk.url}")
     private String zkUrl;
+
+
+    @Override
+    public int getOrder() {
+        return 0;
+    }
 }

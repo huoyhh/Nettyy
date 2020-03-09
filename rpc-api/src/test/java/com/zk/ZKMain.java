@@ -1,6 +1,6 @@
 package com.zk;
 
-import com.entity.ProviderBean;
+import com.entity.rpc.ProviderBean;
 
 /**
  * @author CBeann
