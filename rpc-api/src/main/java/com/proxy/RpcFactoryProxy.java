@@ -47,10 +47,11 @@ public class RpcFactoryProxy<T> implements InvocationHandler {
         requestBean.setAtgsType(parameterTypes[0]);
         //设置请求参数
         requestBean.setArgs(args[0]);
+        //设置请求累
+        requestBean.setRequestClass(proxyInterface.getName());
 
         String s = JsonUtils.objectToJson(requestBean);
-        System.out.println("---------------");
-        System.out.println(nettyClient);
+
         nettyClient.sendMessage(s);
 
 

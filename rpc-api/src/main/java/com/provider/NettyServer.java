@@ -61,7 +61,7 @@ public class NettyServer implements InitializingBean, ApplicationListener<Applic
                             socketChannel.pipeline().addLast(new MyServerHandler(applicationContext));
                         }
                     });
-            System.out.println("Netty服务器启动成功:" + providerConfigBean.getProviderport());
+            System.out.println("服务端    Netty服务器启动成功:" + providerConfigBean.getProviderport());
             //绑定端口
             //ChannelFuture f = b.bind(port).sync();
             ChannelFuture f = b.bind(providerConfigBean.getProviderport()).sync();
@@ -79,7 +79,6 @@ public class NettyServer implements InitializingBean, ApplicationListener<Applic
     @Override
     public void afterPropertiesSet() throws Exception {
 
-        System.out.println("赋值providerConfigBean...");
 
         this.providerConfigBean = applicationContext.getBean(ProviderConfigBean.class);
 

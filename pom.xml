@@ -13,6 +13,8 @@
         <module>rpc-api</module>
         <module>rpc-provider</module>
         <module>rpc-consumer</module>
+        <module>rpc-provider-new</module>
+        <module>rpc-consumer-new</module>
     </modules>
 
 

@@ -1,0 +1,44 @@
+====rpc-api的修改
+1）比如我想写实现StudentService接口的远程调用，你讲把接口写在com.service下
+====rpc-provider的修改
+1）提供者实现StudentService的实现类StudentServiceImpl(package com.service.impl),添加到ioc容器中
+2）修改myrpc_provider.properties里的配置
+provider.name=服务提供者名称
+provider.port=向外暴露的netty接口
+provider.intername=要引用的接口com.service.StudentService
+zk.url=zk地址
+3）修改启动类，添加自定义注解@EnableProvider
+
+@EnableProvider
+public class Rpc_provider_main {
+    public static void main(String[] args) throws Exception {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Rpc_provider_main.class);
+
+        System.out.println("--(rpc-provider-main 正常启动)--");
+        System.in.read();
+    }
+}
+
+====rpc-consumer的修改
+1）修改com.entity下的RefRpcBean的注解@Component("studentService")，其中value为你要注入容器之后的名称
+2）修改myrpc_consumer.properties里的配置
+consumer.name=消费者的名称
+consumerref.intername=消费者要引用的提供者的接口com.service.StudentService
+zk.url=zk地址
+3）修改启动类，添加自定义注解@EnableConsumer
+@EnableConsumer
+public class Rpc_consumer_main {
+    public static void main(String[] args) throws Exception {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Rpc_consumer_main.class);
+        StudentService bean = (StudentService) context.getBean("studentService");
+        bean.selectStudentById(123);
+        System.out.println("--(rpc-consumer-main 正常启动)--");
+        System.in.read();
+
+    }
+}
+
+
+所有的累都要在ioc包下，因为我硬编码在注解里
+所有的累都要在ioc包下，因为我硬编码在注解里
+所有的累都要在ioc包下，因为我硬编码在注解里

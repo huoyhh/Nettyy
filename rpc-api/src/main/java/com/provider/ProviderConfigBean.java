@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@PropertySource("classpath:myrpc_provider.properties")
+@PropertySource(value = "classpath:myrpc_provider.properties",ignoreResourceNotFound = true)
 @Data
 public class ProviderConfigBean {
 

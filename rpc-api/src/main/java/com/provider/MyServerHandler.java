@@ -2,6 +2,7 @@ package com.provider;
 
 import com.entity.rpc.RequestBean;
 import com.entity.rpc.ResponseBean;
+import com.untils.JsonUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -36,17 +37,16 @@ public class MyServerHandler extends SimpleChannelInboundHandler<String> {
         //服务器收到消息
         // "[服务端]   " + channel.remoteAddress() + "通道关闭";
         String body = s;
-        System.out.println(body);
+        System.out.println("接收到的参数： "+body);
 
         //测试请求
         RequestBean requestBean = new RequestBean();
-        requestBean.setRequestClass("com.service.StudentService");
-        requestBean.setRequestMethod("selectStudentById");
-        requestBean.setAtgsType(Integer.class);
-        requestBean.setArgs(1);
+//        requestBean.setRequestClass("com.service.StudentService");
+//        requestBean.setRequestMethod("selectStudentById");
+//        requestBean.setAtgsType(Integer.class);
+//        requestBean.setArgs(1);
         //{"requestClass":"com.service.StudentService","requestMethod":"selectStudentById","args":1}
-
-
+        requestBean = JsonUtils.jsonToPojo(body, RequestBean.class);
 
 
         //获取请求对象
@@ -54,18 +54,17 @@ public class MyServerHandler extends SimpleChannelInboundHandler<String> {
         Object bean = applicationContext.getBean(aClass);
 
 
-
         //获取方法
         Method method = aClass.getMethod(requestBean.getRequestMethod(), requestBean.getAtgsType());
 //
 //        //执行并且返回结果
-        Object result = method.invoke(bean , requestBean.getArgs());
+        Object result = method.invoke(bean, requestBean.getArgs());
 
         ResponseBean responseBean = new ResponseBean();
         responseBean.setCode(200);
         responseBean.setData(result);
 
-        System.out.println(responseBean.toString());
+        System.out.println("请求响应的结果： "+responseBean.toString());
 
 
         channel.write("北京时间：" + new Date().toString());

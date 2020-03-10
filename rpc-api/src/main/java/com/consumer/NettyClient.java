@@ -63,7 +63,7 @@ public class NettyClient implements ApplicationContextAware, InitializingBean, A
                         }
                     });
             //发起异步连接操作
-            System.out.println("netty clinet 启动成功：" + port);
+            System.out.println("客户端    Netty服务器启动成功：" + port);
             f = b.connect(url, port).sync();
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,7 +94,6 @@ public class NettyClient implements ApplicationContextAware, InitializingBean, A
 
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
-        System.out.println("onApplicationEvent");
 
         bind(providerBean.getUrl(), providerBean.getPort());
 
