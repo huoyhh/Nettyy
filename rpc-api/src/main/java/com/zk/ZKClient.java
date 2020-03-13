@@ -15,8 +15,11 @@ import java.util.concurrent.CountDownLatch;
  */
 public class ZKClient {
 
+    //根目录
     private static final String path = "/myrpc/";
+    //服务提供者
     private static final String path_provider = "/myrpc/provider";
+    //服务消费者
     private static final String path_consumer = "/myrpc/consumer";
 
 
@@ -65,6 +68,7 @@ public class ZKClient {
     }
 
 
+    //向zk注册服务提供者
     public void sendProviderBeanMsg(ProviderBean providerBean) {
 
 
@@ -80,6 +84,7 @@ public class ZKClient {
 
     }
 
+    //获取服务提供者集合
     public List<ProviderBean> getProviderBeanList() {
 
         List<ProviderBean> providerBeanList = new ArrayList<>();
@@ -99,6 +104,7 @@ public class ZKClient {
         return providerBeanList;
     }
 
+    //获取服务消费者集合
     public List<ConsumerBean> getConsumerBeanList() {
         List<ConsumerBean> consumerBeanList = new ArrayList<>();
 
@@ -121,6 +127,7 @@ public class ZKClient {
         return consumerBeanList;
     }
 
+    //向zk注册服务消费者
     public void sendConsumerBeannMsg(ConsumerBean consumerBean) {
 
         String s = JsonUtils.objectToJson(consumerBean);
@@ -134,6 +141,7 @@ public class ZKClient {
 
     }
 
+    //关闭zk
     public void closeZk() {
         try {
             zk.close();

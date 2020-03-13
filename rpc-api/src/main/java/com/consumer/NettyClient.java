@@ -59,7 +59,7 @@ public class NettyClient implements ApplicationContextAware, InitializingBean, A
                             socketChannel.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
                             socketChannel.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
                             //TimeClientHandler是自己定义的方法
-                            socketChannel.pipeline().addLast(new MyChatClientHandler());
+                            socketChannel.pipeline().addLast(new MyClientHandler());
                         }
                     });
             //发起异步连接操作

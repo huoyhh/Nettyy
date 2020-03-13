@@ -8,7 +8,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @author CBeann
  * @create 2019-10-16 21:23
  */
-public class MyChatClientHandler extends SimpleChannelInboundHandler<String> {
+public class MyClientHandler extends SimpleChannelInboundHandler<String> {
 
 
     @Override
@@ -17,7 +17,7 @@ public class MyChatClientHandler extends SimpleChannelInboundHandler<String> {
 
         //收到服务端发送的消息
         String body = s;
-        System.out.println(body);
+        System.out.println("收到服务端数据： "+body);
 
 
     }
